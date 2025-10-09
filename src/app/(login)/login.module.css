@@ -1,19 +1,47 @@
 .pageContainer {
   display: flex;
   min-height: 100vh;
-  background-color: #111940;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.pageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+  animation: backgroundFloat 20s ease-in-out infinite;
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(10px) rotate(-1deg); }
 }
 
 .left {
   flex: 1;
   position: relative;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .leftImage {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.left:hover .leftImage {
+  transform: scale(1.02);
 }
 
 /* RIGHT: LOGIN FORM */
@@ -22,43 +50,64 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #111940;
   padding: 40px 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .loginBox {
   flex-direction: column;
   display: flex;
-  background: linear-gradient(135deg, #ffffff, #f8fafc);
-  /* màu sáng mềm mại hơn */
-  padding: 60px;
-  /* rộng rãi hơn */
-  border-radius: 28px;
-  /* bo góc mềm hơn */
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15),
-    0 0 20px rgba(129, 140, 248, 0.1);
-  /* shadow dịu hơn */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 50px 40px;
+  border-radius: 30px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
   width: 100%;
-  max-width: 520px;
-  /* login box to hơn */
+  max-width: 480px;
   height: auto;
   text-align: center;
-  transition: all 0.35s ease;
-  /* hiệu ứng mượt hơn */
+  transition: all 0.3s ease;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  border: 1px solid rgba(129, 140, 248, 0.15);
-  /* viền mờ nhẹ */
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.loginBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .title {
-  font-size: 58px;
-  /* chữ to hơn */
+  font-size: 42px;
   font-weight: 800;
   margin-bottom: 35px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
 }
 
 .input {

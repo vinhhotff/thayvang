@@ -71,10 +71,11 @@ export default function Login() {
     <div className={styles.pageContainer}>
       <div className={styles.left}>
         <Image
-          src="https://www.investopedia.com/thmb/kVxMl1DFogJNwnjMJv6zNxmuU6c=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-618432992-a6784667528e4771bf8a69477a149d05.jpg"
-          alt="Login"
+          src="https://imageio.forbes.com/specials-images/imageserve/638a98b6a088e5ce47202972/Girls-carrying-shopping-bags/960x0.jpg?format=jpg&width=960"
+          alt="Shopping Girls"
           fill
           className={styles.leftImage}
+          priority
         />
       </div>
       <div className={styles.right}>
