@@ -17,7 +17,7 @@ export interface AuthResponse {
 export const login = async (email: string, password: string): Promise<AuthResponse> => {
   try {
     const res = await axios.post<AuthResponse>(
-      `${API_URL}auth/login`,
+      `${API_URL}/auth/login`,
       { email, password },
       { withCredentials: true }
     );
@@ -29,11 +29,11 @@ export const login = async (email: string, password: string): Promise<AuthRespon
   }
 };
 export const register = async (name: string, email: string, password: string) => {
-  const res = await axios.post(`${API_URL}auth/register`, { name, email, password }, { withCredentials: true });
+  const res = await axios.post(`${API_URL}/auth/register`, { name, email, password }, { withCredentials: true });
   return res.data;
 };
 
 export const logout = async () => {
-  await axios.post(`${API_URL}auth/logout`, {}, { withCredentials: true });
+  await axios.post(`${API_URL}/auth/logout`, {}, { withCredentials: true });
   return true;
 };
