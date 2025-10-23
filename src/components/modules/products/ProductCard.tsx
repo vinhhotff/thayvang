@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { Product } from '@/types/product';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Edit, Trash2, Package } from 'lucide-react';
+import { Edit, Trash2, Package, ShoppingCart } from 'lucide-react';
 import { useDeleteProduct } from '@/hooks/useProducts';
+import { useCart } from '@/hooks/useCart';
 import { useState } from 'react';
 
 interface ProductCardProps {
@@ -18,6 +19,7 @@ export default function ProductCard({ product, onEdit }: ProductCardProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [imageError, setImageError] = useState(false);
   const deleteProduct = useDeleteProduct();
+  const { addToCart, isAddingToCart } = useCart();
 
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this product?')) {
@@ -30,6 +32,11 @@ export default function ProductCard({ product, onEdit }: ProductCardProps) {
         setIsDeleting(false);
       }
     }
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    addToCart({ productId: product._id, quantity: 1 });
   };
 
   return (
@@ -91,6 +98,14 @@ export default function ProductCard({ product, onEdit }: ProductCardProps) {
             {new Date(product.createdAt).toLocaleDateString()}
           </span>
         </div>
+        <Button
+          onClick={handleAddToCart}
+          disabled={isAddingToCart}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-3"
+        >
+          <ShoppingCart className="h-4 w-4 mr-2" />
+          Add to Cart
+        </Button>
       </div>
     </div>
   );
