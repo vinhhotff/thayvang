@@ -20,7 +20,7 @@ export const useOrders = () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
       toast.success('Order placed successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to create order');
     },
   });
@@ -32,7 +32,7 @@ export const useOrders = () => {
       queryClient.invalidateQueries({ queryKey: ['orders'] });
       toast.success('Order cancelled');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to cancel order');
     },
   });
@@ -44,7 +44,7 @@ export const useOrders = () => {
       queryClient.invalidateQueries({ queryKey: ['orders'] });
       toast.success('Payment processed successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Payment failed');
     },
   });

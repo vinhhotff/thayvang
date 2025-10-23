@@ -19,7 +19,7 @@ export const useCart = () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
       toast.success('Product added to cart');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to add to cart');
     },
   });
@@ -32,7 +32,7 @@ export const useCart = () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
       toast.success('Cart updated');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to update cart');
     },
   });
@@ -44,7 +44,7 @@ export const useCart = () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
       toast.success('Product removed from cart');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to remove from cart');
     },
   });
@@ -56,7 +56,7 @@ export const useCart = () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
       toast.success('Cart cleared');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to clear cart');
     },
   });
